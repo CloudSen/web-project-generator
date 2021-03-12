@@ -1,9 +1,7 @@
-package com.clouds3n.generator.webprojectgenerator.config.template;
+package com.clouds3n.generator.webprojectgenerator.module.mp;
 
-import com.clouds3n.generator.webprojectgenerator.config.template.module.CommonSettings;
-import com.clouds3n.generator.webprojectgenerator.config.template.module.MavenSettings;
-import com.clouds3n.generator.webprojectgenerator.config.template.module.MybatisPlusAutoGeneratorSettings;
-import com.clouds3n.generator.webprojectgenerator.config.template.module.MybatisPlusYmlSettings;
+import com.clouds3n.generator.webprojectgenerator.module.CommonSettings;
+import com.clouds3n.generator.webprojectgenerator.module.mvn.MavenSettings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +21,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class MybatisPlusTemplateConfig {
-
     @Valid
     @NotNull
     private CommonSettings commonSettings;
@@ -31,7 +28,9 @@ public class MybatisPlusTemplateConfig {
     @NotNull
     private MavenSettings mavenSettings;
     @Valid
+    @NotNull
     private MybatisPlusAutoGeneratorSettings mpSettings;
     @Valid
+    @NotNull
     private MybatisPlusYmlSettings mpYmlSettings;
 }

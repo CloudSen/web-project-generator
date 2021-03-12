@@ -1,5 +1,6 @@
-package com.clouds3n.generator.webprojectgenerator.config.template.module;
+package com.clouds3n.generator.webprojectgenerator.module.mp;
 
+import com.clouds3n.generator.webprojectgenerator.module.MyStarterSettings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import java.util.List;
 
 /**
  * java yml configuration settings for mybatis-plus + dynamic datasource
+ *
  * @author clouds3n
  * @time 2020-11-05 10:24
  */
@@ -19,25 +21,21 @@ import java.util.List;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class MybatisPlusYmlSettings {
-
     /**
      * running port
      */
     @NotBlank(message = "Please specify the project running port")
     private String port;
-
     /**
      * used for spring.application.name
      */
     @NotBlank(message = "Please specify application name")
     private String appName;
-
     /**
      * used for spring.profiles.active
      */
     @NotBlank(message = "Please specify active profile")
     private String activeProfile;
-
     /**
      * used for different spring environments(dev,test,prod,etc.)
      */
@@ -49,7 +47,6 @@ public class MybatisPlusYmlSettings {
     @NoArgsConstructor
     @Accessors(chain = true)
     public static class YmlEnvironment {
-
         /**
          * used for spring.profiles
          */
@@ -60,7 +57,6 @@ public class MybatisPlusYmlSettings {
          */
         @Valid
         private DynamicDatasourceSettings dynamicDatasourceSettings;
-
         /**
          * used for <code>config.starter</code>
          */

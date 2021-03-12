@@ -1,4 +1,4 @@
-package com.clouds3n.generator.webprojectgenerator.config.template.module;
+package com.clouds3n.generator.webprojectgenerator.module.mvn;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

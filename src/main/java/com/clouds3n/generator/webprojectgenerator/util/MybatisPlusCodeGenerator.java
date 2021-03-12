@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.clouds3n.generator.webprojectgenerator.config.template.module.MybatisPlusAutoGeneratorSettings;
+import com.clouds3n.generator.webprojectgenerator.module.mp.MybatisPlusAutoGeneratorSettings;
 
 import java.io.File;
 import java.util.ArrayList;

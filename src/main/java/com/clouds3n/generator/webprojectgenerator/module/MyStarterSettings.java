@@ -1,5 +1,6 @@
-package com.clouds3n.generator.webprojectgenerator.config.template.module;
+package com.clouds3n.generator.webprojectgenerator.module;
 
+import com.clouds3n.generator.webprojectgenerator.module.threadpool.ThreadPoolSettings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

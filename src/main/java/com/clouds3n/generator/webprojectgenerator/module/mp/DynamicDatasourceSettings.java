@@ -1,4 +1,4 @@
-package com.clouds3n.generator.webprojectgenerator.config.template.module;
+package com.clouds3n.generator.webprojectgenerator.module.mp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * dynamic datasource settings data-module
+ *
  * @author clouds3n
  * @time 2020-11-05 09:56
  */
@@ -20,28 +21,28 @@ import java.util.List;
 public class DynamicDatasourceSettings {
 
     /**
-     * default datasource nick name
+     * 默认数据源，指定别名
      */
     @NotBlank(message = "Please specify spring.datasource.dynamic.primary")
     private String primary;
 
     /**
-     * whether use strict mode
+     * 是否使用严格模式
      */
     private boolean strict = true;
 
     /**
-     * whether print sql
+     * 是否打印sql
      */
     private boolean p6spy = false;
 
     /**
-     * common druid settings
+     * 全局Druid设置
      */
     private DruidSettings commonDruidSettings;
 
     /**
-     * multiple datasource settings
+     * 数据源设置列表
      */
     private List<DatasourceSettings> datasourceSettings;
 
@@ -53,79 +54,70 @@ public class DynamicDatasourceSettings {
     @NoArgsConstructor
     @Accessors(chain = true)
     public static class DruidSettings {
-
         /**
-         * specify druid filters,separated by comma
-         * <p>default is "stat"</p>
+         * 指定过滤器，以逗号分割
+         * <p>默认为"stat"</p>
          */
         private String filters = "stat";
-
         /**
-         * initial size of connection pool
-         * <p>default is 5</p>
+         * 连接池初始化大小
+         * <p>默认为5</p>
          */
         private Integer initialSize = 5;
-
         /**
-         * min idle connection
-         * <p>default is 5</p>
+         * 最小空闲连接数
+         * <p>默认为5</p>
          */
         private Integer minIdle = 5;
-
         /**
-         * max wait time ms
-         * <p>default is 6s</p>
+         * 最长等待时间
+         * <p>默认为6s</p>
          */
         private Integer maxWait = 6000;
-
         /**
-         * max active connection
-         * <p>default is 20</p>
+         * 最大连接数
+         * <p>默认为20</p>
          */
         private Integer maxActive = 20;
-
         /**
-         * whether test connection status while idle
-         * <p>default is true</p>
+         * 是否在Borrow时执行数据库连接状态测试
+         * <p>默认为true</p>
          */
         private boolean testWhileIdle = true;
-
         /**
-         * whether test connection status on borrow
-         * <p>default is false</p>
+         * 是否在空闲时执行数据库连接状态测试
+         * <p>默认为false</p>
          */
         private boolean testOnBorrow = false;
-
         /**
-         * whether test connection status on return
-         * <p>default is false</p>
+         * 是否在返回时执行数据库连接状态测试
+         * <p>默认为false</p>
          */
         private boolean testOnReturn = false;
-
         /**
-         * whether prepared statements, if use oracle recommend to enable
-         * <p>default is true</p>
+         * 是否预处理语句，若是Oracle则设置为true
+         * <p>默认为true</p>
          */
         private boolean poolPreparedStatements = true;
-
         /**
-         * max prepared statements size per connection
-         * <p>default is 100</p>
+         * 每个连接最大预处理语句数
+         * <p>默认为50</p>
          */
-        private Integer maxPreparedStatementsPerConnectionSize = 100;
-
+        private Integer maxPreparedStatementsPerConnectionSize = 50;
         /**
-         * used to test connection status
-         * <p>if use oracle db, then specify "select 1 from dual".</p>
+         * 用于测试数据库连接状态
+         * <p>Oracle: "select 1 from dual".</p>
+         * <p>Mysql: "SELECT 1"</p>
+         * <p>SQLSERVER: "SELECT 1"</p>
+         * <p>ORACLE: "SELECT 'x' FROM DUAL"</p>
+         * <p>Postgre: "SELECT 'x'"</p>
          */
         private String validationQuery = "select 1 from dual";
-
         /**
-         * test query timeout
-         * <p>default is 6s</p>
+         * 测试语句超时时间
+         * <p>默认为6s</p>
          */
         private Integer validationQueryTimeout = 6000;
-
     }
 
     /**
@@ -136,11 +128,29 @@ public class DynamicDatasourceSettings {
     @NoArgsConstructor
     @Accessors(chain = true)
     public static class DatasourceSettings {
+        /**
+         * 数据库别名
+         */
         private String nickName;
+        /**
+         * 用户名
+         */
         private String username;
+        /**
+         * 密码
+         */
         private String password;
+        /**
+         * 连接地址
+         */
         private String url;
+        /**
+         * 驱动名
+         */
         private String driverName;
-        private DruidSettings customDruidSettings;
+        /**
+         * druid设置（覆盖全局）
+         */
+        private DynamicDatasourceSettings.DruidSettings customDruidSettings;
     }
 }

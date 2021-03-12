@@ -1,7 +1,6 @@
 package com.clouds3n.generator.webprojectgenerator.service;
 
-import com.clouds3n.generator.webprojectgenerator.config.template.MybatisPlusTemplateConfig;
-import freemarker.template.Configuration;
+import com.clouds3n.generator.webprojectgenerator.module.mp.MybatisPlusTemplateConfig;
 
 import java.io.IOException;
 
@@ -25,8 +24,7 @@ public interface ProjectGenerator {
     /**
      * do generate
      * @param templateConfig freemarker template config
-     * @param freemarker freemarker instance
      * @throws IOException io exception
      */
-    void generate(MybatisPlusTemplateConfig templateConfig, Configuration freemarker) throws IOException;
+    void generate(MybatisPlusTemplateConfig templateConfig) throws IOException;
 }

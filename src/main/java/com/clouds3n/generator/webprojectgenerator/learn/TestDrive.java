@@ -1,11 +1,15 @@
 package com.clouds3n.generator.webprojectgenerator.learn;
 
-import com.clouds3n.generator.webprojectgenerator.config.template.MybatisPlusTemplateConfig;
-import com.clouds3n.generator.webprojectgenerator.config.template.module.*;
-import com.clouds3n.generator.webprojectgenerator.service.GenerateService;
+import com.clouds3n.generator.webprojectgenerator.module.mp.MybatisPlusTemplateConfig;
+import com.clouds3n.generator.webprojectgenerator.module.*;
+import com.clouds3n.generator.webprojectgenerator.module.mp.DynamicDatasourceSettings;
+import com.clouds3n.generator.webprojectgenerator.module.mp.MybatisPlusAutoGeneratorSettings;
+import com.clouds3n.generator.webprojectgenerator.module.mp.MybatisPlusYmlSettings;
+import com.clouds3n.generator.webprojectgenerator.module.mvn.MavenSettings;
 import freemarker.template.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,11 +29,9 @@ import java.util.Map;
 public class TestDrive {
 
     private final Configuration freemarker;
-    private final GenerateService generateService;
 
-    public TestDrive(Configuration freemarker, GenerateService generateService) {
+    public TestDrive(Configuration freemarker) {
         this.freemarker = freemarker;
-        this.generateService = generateService;
     }
 
     @GetMapping("")
@@ -112,7 +114,7 @@ public class TestDrive {
         return "ok";
     }
 
-    @GetMapping("/path")
+    @PostMapping("/path")
     public Object testPath() throws IOException {
         CommonSettings commonSettings = new CommonSettings()
             .setAuthor("CloudS3n")
@@ -125,7 +127,6 @@ public class TestDrive {
         new MybatisPlusAutoGeneratorSettings()
             .setAuthor(commonSettings.getAuthor());
         MybatisPlusTemplateConfig templateConfig = new MybatisPlusTemplateConfig(commonSettings, mavenSettings, null, null);
-        generateService.generateProject(templateConfig);
         return "ok";
     }
 }

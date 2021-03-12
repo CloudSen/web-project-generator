@@ -92,7 +92,11 @@
         <artifactId>mybatis-plus-generator</artifactId>
         <version>3.4.0</version>
       </dependency>
-
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>1.20</version>
+      </dependency>
     </dependencies>
 
     <build>
